@@ -6,6 +6,7 @@ import (
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/google/uuid"
 )
 
 type Client struct {
@@ -58,6 +59,26 @@ func (c *Client) Users() ([]User, error) {
 		users = append(users, u)
 	}
 	return users, nil
+}
+
+func (c *Client) NewUser(name string, age int) (*User, error) {
+	stmt, err := c.db.Prepare("INSERT INTO users (id, name, age) VALUES (?, ?, ?)")
+	if err != nil {
+		return nil, err
+	}
+
+	id := uuid.New().String()
+	_, err = stmt.Exec(id, name, age)
+	if err != nil {
+		return nil, err
+	}
+
+	var u User
+	u.ID = id
+	u.Name = name
+	u.Age = age
+
+	return &u, nil
 }
 
 func (c *Client) User(userID string) (*User, error) {

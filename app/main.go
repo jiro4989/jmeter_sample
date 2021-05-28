@@ -16,6 +16,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	e.GET("/users", apiGetUsers)
+	e.POST("/users", apiPostUsers)
 	e.GET("/users/:id", apiGetUsersUserID)
 	e.GET("/users/:id/hobbies", apiGetUsersUserIDHobbies)
 
