@@ -16,7 +16,7 @@ services:
       - ./app:/app
     ports:
       - 1323:1323
-    entrypoint: /app/entrypoint.sh
+    entrypoint: air
 
   db:
     image: mysql:8.0
