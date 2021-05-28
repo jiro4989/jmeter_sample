@@ -6,8 +6,25 @@ services:
     build:
       context: ./app
       target: base
+    environment:
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_HOSTNAME: app_db
+      DB_PORT: 3306
+      DB_DATABASE: app
     volumes:
       - ./app:/app
     ports:
       - 1323:1323
     entrypoint: /app/entrypoint.sh
+
+  db:
+    image: mysql:8.0
+    container_name: app_db
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./db/sql:/docker-entrypoint-initdb.d
+    expose:
+      - 3306
