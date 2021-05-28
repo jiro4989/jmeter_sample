@@ -6,6 +6,13 @@ help: ## ドキュメントのヘルプを表示する。
 up: ## app コンテナを起動する。
 	docker-compose up
 
+.PHONY: down
+down: ## app コンテナを停止する。
+	docker-compose down
+
+.PHONY: restart
+restart: down up ## app コンテナを再起動する。
+
 .PHONY: jmeter
 jmeter: ## jmeter を単発で実行する。
 	docker-compose -f docker-compose-jmeter.yml run --rm jmeter
