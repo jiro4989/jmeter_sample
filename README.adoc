@@ -3,8 +3,5 @@
 :sectnums:
 
 負荷試験ツールjmeterを使うサンプル。
-ローカルPCにPHPで作ったログイン認証の必要な単純なWebアプリコンテナを立ち上げる。
-その後立ち上げたアプリに対してjmeterで負荷をかける。
 
-このリポジトリではjmeterの設定ファイルjmxファイルとPHPのコードを管理する。
-あと単純な使い方などを残す。
+https://user-images.githubusercontent.com/13825004/120019733-c23b8100-c023-11eb-91cf-b5835a4ca7cc.png[image]
