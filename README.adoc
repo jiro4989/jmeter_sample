@@ -34,3 +34,28 @@ report/index.html をブラウザで確認し、OKになっているかを確認
 ----
 make jmeter-60
 ----
+
+== テストプランの更新方法
+
+jmeterのテストプラン(jmxファイル)の更新はGUIから行う。
+GUIつきjmeterをホストPCにインストールし、app.jmxファイルを開いて更新すること。
+
+== app.jmxの構成
+
+以下のユーザ定義変数を使用するようにしている。
+
+- BASE_URL
+- THREADS
+- SECONDS
+
+jmeterからリクエストを送る時、HTTPサンプラーにURLを設定する。
+HTTPサンプラーは数が非常に増えるため、ベースURLを変数で共通化している。
+それをテストプラン直下の BASE_URL というユーザ定義変数に設定して共通化している。
+
+THREADS と SECONDS は負荷をかける量を制御する変数。
+THREADS = 1000, SECONDS = 10 の場合、 1000 / 10 == 100 になるので、秒間100リクエ
+ストの負荷を10秒間かける、といった負荷設定になる。
+
+これらをjmeterを実行する時のコマンドライン引数から制御できるようにした。
+パラメータはそれぞれ THREADS に対して C_THREADS、 SECONDS に対して C_SECONDS と
+した。
