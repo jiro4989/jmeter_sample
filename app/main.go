@@ -19,6 +19,7 @@ func main() {
 	e.POST("/users", apiPostUsers)
 	e.GET("/users/:id", apiGetUsersUserID)
 	e.GET("/users/:id/hobbies", apiGetUsersUserIDHobbies)
+	e.POST("/users/:id/hobbies", apiPostHobbies)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

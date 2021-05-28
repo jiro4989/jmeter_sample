@@ -52,3 +52,21 @@ func apiGetUsersUserIDHobbies(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, hobbies)
 }
+
+func apiPostHobbies(c echo.Context) error {
+	userID := c.Param("id")
+
+	var h Hobby
+	if err := c.Bind(&h); err != nil {
+		return err
+	}
+	if h.Name == "" {
+		return nil
+	}
+
+	hobby, err := client.NewHobby(userID, h.Name)
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, hobby)
+}

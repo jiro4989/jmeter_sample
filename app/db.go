@@ -116,3 +116,23 @@ func (c *Client) Hobbies(userID string) ([]Hobby, error) {
 
 	return hobbies, nil
 }
+
+func (c *Client) NewHobby(userID string, name string) (*Hobby, error) {
+	stmt, err := c.db.Prepare("INSERT INTO hobbies (id, user_id, name) VALUES (?, ?, ?)")
+	if err != nil {
+		return nil, err
+	}
+
+	id := uuid.New().String()
+	_, err = stmt.Exec(id, userID, name)
+	if err != nil {
+		return nil, err
+	}
+
+	var h Hobby
+	h.ID = id
+	h.UserID = userID
+	h.Name = name
+
+	return &h, nil
+}
