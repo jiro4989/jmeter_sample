@@ -1,0 +1,13 @@
+---
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: ./app
+      target: base
+    volumes:
+      - ./app:/app
+    ports:
+      - 1323:1323
+    entrypoint: /app/entrypoint.sh
