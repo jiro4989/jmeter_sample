@@ -1,0 +1,11 @@
+---
+version: '3.7'
+
+services:
+  jmeter:
+    image: justb4/jmeter:5.3
+    volumes:
+      - ./jmeter:/work
+    working_dir: /work
+    network_mode: host
+    entrypoint: ./entrypoint.sh
