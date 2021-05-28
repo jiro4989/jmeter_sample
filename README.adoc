@@ -5,3 +5,32 @@
 負荷試験ツールjmeterを使うサンプル。
 
 image::https://user-images.githubusercontent.com/13825004/120019733-c23b8100-c023-11eb-91cf-b5835a4ca7cc.png[report]
+
+== 使い方
+
+まず、 `app` コンテナを起動する。
+`app` コンテナは Go の echo で実装された単純なAPIサーバ。
+
+[source,bash]
+----
+make up
+----
+
+次に `jmeter` コンテナを起動して単一のAPIリクエストを行う。
+以下のコマンドを実行する。
+
+[source,bash]
+----
+make jmeter
+----
+
+実行すると `jmeter/out` ディレクトリにレポートが作られる。
+report/index.html をブラウザで確認し、OKになっているかを確認する。
+
+確認ができたら負荷をかける。
+以下のコマンドで秒間を100リクエストの負荷を60秒間かけ続ける。
+
+[source,bash]
+----
+make jmeter-60
+----
