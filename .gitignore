@@ -3,3 +3,4 @@ app/app
 jmeter/out/
 
 app/tmp/main
+app/tmp/build-errors.log
