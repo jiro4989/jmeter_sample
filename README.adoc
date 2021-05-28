@@ -4,4 +4,4 @@
 
 負荷試験ツールjmeterを使うサンプル。
 
-https://user-images.githubusercontent.com/13825004/120019733-c23b8100-c023-11eb-91cf-b5835a4ca7cc.png[image]
+image::https://user-images.githubusercontent.com/13825004/120019733-c23b8100-c023-11eb-91cf-b5835a4ca7cc.png[report]
